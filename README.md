@@ -4,6 +4,8 @@
 Портированный на React проект ["Mesto"](https://mitkas7.github.io/mesto/).
 C возможностью регистрации.
 
+["Ссылка на gh-pages"](https://mitkas7.github.io/react-mesto-auth/)
+
 Планируется добавить:
 * валидацию форм.
 * закрытие попапов по клику на overlay.
