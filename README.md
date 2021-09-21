@@ -1,7 +1,7 @@
 # Проект "Место" на Реакте.
 ## Getting Started with Create React App
 
-Портированный на React проект ["Mesto"](https://mitkas7.github.io/mesto/).
+Портированный на React проект ["Mesto"](https://mitkermit.github.io/mesto/).
 C возможностью регистрации.
 
 ["Ссылка на gh-pages"](https://mitkas7.github.io/react-mesto-auth/)

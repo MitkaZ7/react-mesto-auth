@@ -4,6 +4,7 @@ import { Link, Route } from 'react-router-dom';
 export default function Register(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+
   function handleAddEmail(evt) {
     setEmail(evt.target.value);
   }
