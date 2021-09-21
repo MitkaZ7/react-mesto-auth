@@ -4,7 +4,7 @@
 Портированный на React проект ["Mesto"](https://mitkermit.github.io/mesto/).
 C возможностью регистрации.
 
-["Ссылка на gh-pages"](https://mitkas7.github.io/react-mesto-auth/)
+["Ссылка на gh-pages"](https://mitkermit.github.io/react-mesto-auth/)
 
 Планируется добавить:
 * валидацию форм.
