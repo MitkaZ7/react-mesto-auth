@@ -79,7 +79,7 @@ function App() {
     })
   }
   // auth
-  function handleAuthorization({email, password}) {
+  function handleLogin ({email, password}) {
     authApi.authorize({email, password})
     .then((res) => {
       if (res.token) {
@@ -215,10 +215,10 @@ function App() {
           logOut={handleSignOut}
           />
           <Route path="/sign-up">
-            <Register handleRegistration={handleRegistration} />
+            <Register onSubmit={handleRegistration}/>
           </Route>
           <Route path="/sign-in">
-            <Login handleAuthorization={handleAuthorization}
+            <Login onSubmit={handleLogin}
               onCheckToken={handleCheckToken} />
           </Route>
           <Route path="/">

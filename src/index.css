@@ -65,7 +65,7 @@
 @import url(./blocks/button/_type/button_type_login.css);
 @import url(./blocks/popup/__title/_place/popup__title_place_login.css);
 @import url(./blocks/popup/__redirect-container/popup__redirect-container.css);
-@import url(./blocks/popup/__redirect-container-link/popup__redirect-container-link.css);
+@import url(./blocks/popup/__redirect-link/popup__redirect-container-link.css);
 @import url(./blocks/popup/__container/_place/popup__cointainer_place_infoToolTip.css);
 @import url(./blocks/popup/__title/_place/popup__title_place_infoTooltip.css);
 @import url(./blocks/popup/__fieldset/_place/popup__filedset_place_infoToolTip.css);

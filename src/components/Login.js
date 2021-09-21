@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-export default function Login({handleAuthorization}) {
+export default function Login({onSubmit}) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -12,18 +12,14 @@ export default function Login({handleAuthorization}) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
-    handleAuthorization({password, email});
+    onSubmit({password, email});
   }
   return (
-    <div className="popup__authorization">
-        <form name="popup-form" className="popup__form" onSubmit={handleSubmit}>
-          <h3 className="popup__title popup__title_place_login">Вход</h3>
-        <input className="popup__form-input popup__form-input_type_authorization-data" type="email" value={email} placeholder="Email" id="inputEmail" required maxLength="40" minLength="1" onChange={handleСhangeEmail}></input>
-          {/* <span className="popup__input-error inputEmail-error"></span> */}
-          <input className="popup__form-input popup__form-input_type_authorization-data" type="password" value={password} placeholder="Пароль" id="imputPassword" required maxLength="40" minLength="2" onChange={handleChangePassword}></input>
-          {/* <span className="popup__input-error inputPassword-error"></span> */}
-        <button className="popup__button-submit button button_type_login">Войти</button>
-        </form>
-    </div>
+    <form className="popup__authorization" onSubmit={handleSubmit}>
+      <h3 className="popup__title popup__title_place_login">Вход</h3>
+      <input className="popup__form-input popup__form-input_type_authorization-data" onChange={handleСhangeEmail} type="email" value={email} placeholder="Email" id="inputEmail" required></input>
+      <input className="popup__form-input popup__form-input_type_authorization-data" onChange={handleChangePassword} type="password" value={password} placeholder="Пароль" id="imputPassword" required maxLength="40" minLength="2"></input>
+      <button className="popup__button-submit button button_type_login">Войти</button>
+    </form>
   )
 }
