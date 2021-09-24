@@ -108,6 +108,12 @@ function App() {
     setIsInfoTooltipOpen(false);
     setSelectedCard({});
   }
+  const closeByOverlayClick = (evt) => {
+    if (evt.target === evt.currentTarget) {
+      closeAllPopups();
+    }
+  }
+
   function handleUpdateAvatar(avatar) {
     api
       .editUserAvatar(avatar)
@@ -120,8 +126,7 @@ function App() {
     })
   }
   function handleUpdateProfile(userProfile) {
-    api
-      .editUserInfo(userProfile)
+    api.editUserInfo(userProfile)
       .then((res) => {
         setCurrentUser(res);
         closeAllPopups();
@@ -167,7 +172,7 @@ function App() {
       api
       .removeCard(card._id)
         .then(() => {
-          setCards(cards.filter((c) => c._id !== card._id))
+          setCards((state) => state.filter((c) => c._id !== card._id));
           closeAllPopups();
         })
         .catch((error) => {
@@ -193,6 +198,7 @@ function App() {
       }
     }
     document.addEventListener('keyup', handleEscClose);
+    return () => document.removeEventListener("keyup", handleEscClose);
   }, []);
 
   return (
@@ -227,7 +233,7 @@ function App() {
         </Switch>
         <Footer />
       </div>
-      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateProfile}></EditProfilePopup>
+      <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateProfile} onOverlayClick={closeByOverlayClick}></EditProfilePopup>
       <AddPlacePopup isOpen={isAddCardPopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSumbmit}></AddPlacePopup>
       <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}></EditAvatarPopup>
       <PopupWithForm name="remove-card" title="Вы уверены?" onClose={closeAllPopups} buttonTitle="Да" />

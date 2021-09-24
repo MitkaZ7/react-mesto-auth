@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CurrentUserContext } from '../contexts/CurrentUserContext';
 import PopupWithForm from './PopupWithForm';
 
 
-export default function EditProfilePopup(props) {
+export default function EditProfilePopup({ isOpen, onClose, onClick, onOverlayClick, ...props}) {
   const currentUser = React.useContext(CurrentUserContext);
   const [name, setUserName] = useState('');
   const [description, setDescription] = useState('');
 
-  React.useEffect(() => {
+  useEffect(() => {
     setUserName(currentUser.name);
     setDescription(currentUser.about);
-  }, [currentUser]);
+  }, [currentUser, isOpen]);
 
   function handleChangeName(evt) {
     setUserName(evt.target.value)
@@ -27,10 +27,10 @@ export default function EditProfilePopup(props) {
     });
   }
   return (
-    <PopupWithForm name="profile-edit" title="Редактировать профиль" isOpen={props.isOpen} onClose={props.onClose} onClick={props.onClick} buttonTitle="Сохранить" onSubmit={handleSubmit}>
-      <input onChange={handleChangeName} id="inputName" type="text" className="popup__form-input popup__form-input_type_name" name="name" placeholder="Имя" minLength="2" maxLength="40" required value={props.name}/>
+    <PopupWithForm name="profile-edit" title="Редактировать профиль" isOpen={isOpen} onClose={onClose} onClick={onClick} buttonTitle="Сохранить" onSubmit={handleSubmit} onOverlayClick={onOverlayClick}>
+      <input onChange={handleChangeName} id="inputName" type="text" className="popup__form-input popup__form-input_type_name" name="name" placeholder="Имя" minLength="2" maxLength="40" required value={name}/>
       <span className="popup__input-error inputName-error"></span>
-      <input onChange={handleDescriptionChange} id="inputAbout" type="text" className="popup__form-input popup__form-input_type_job" name="about" placeholder="Чем вы занимаетесь?" minLength="2" maxLength="200" required  value={props.about}/>
+      <input onChange={handleDescriptionChange} id="inputAbout" type="text" className="popup__form-input popup__form-input_type_job" name="about" placeholder="Чем вы занимаетесь?" minLength="2" maxLength="200" required  value={description}/>
       <span className="popup__input-error inputAbout-error"></span>
     </PopupWithForm>
   )
