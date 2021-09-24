@@ -221,7 +221,7 @@ function App() {
           logOut={handleSignOut}
           />
           <Route path="/sign-up">
-            <Register onSubmit={handleRegistration}/>
+            <Register handleRegistration={handleRegistration}/>
           </Route>
           <Route path="/sign-in">
             <Login onSubmit={handleLogin}

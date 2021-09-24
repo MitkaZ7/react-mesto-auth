@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import { Link, Route } from 'react-router-dom';
 
-export default function Register({onSubmit}) {
+export default function Register(props) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -15,7 +15,7 @@ export default function Register({onSubmit}) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
-    onSubmit.handleRegistration(email, password);
+    props.handleRegistration(email, password);
   }
     return (
       <form name="popup-form" className="popup__authorization" onSubmit={handleSubmit}>
